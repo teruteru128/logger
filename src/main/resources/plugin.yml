@@ -2,5 +2,5 @@ name: Logger
 version: ${version}
 description: logging
 author: teruteru128
-main: com.twitter.teruteru128.logger.Main
+main: com.github.teruteru128.logger.Main
 api-version: 1.20
