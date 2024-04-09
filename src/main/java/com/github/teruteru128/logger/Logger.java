@@ -12,7 +12,7 @@ public class Logger {
     }
 
     Logger(java.util.logging.Logger logger, Level level) {
-        _logger = logger;
+        this._logger = logger;
         this.configuredLevel = level;
     }
 
@@ -42,11 +42,11 @@ public class Logger {
 
     public void log(org.apache.logging.log4j.Level viewLevel, java.util.logging.Level logLevel, String msg) {
         if (viewLevel.compareTo(this.configuredLevel) >= 0) {
-            _logger.log(logLevel, msg);
+            this._logger.log(logLevel, msg);
         }
     }
 
     public java.util.logging.Logger getLogger() {
-        return _logger;
+        return this._logger;
     }
 }
