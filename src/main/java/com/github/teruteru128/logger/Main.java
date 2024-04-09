@@ -1,4 +1,4 @@
-package com.twitter.teruteru128.logger;
+package com.github.teruteru128.logger;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
