@@ -1,19 +1,37 @@
 package com.github.teruteru128.logger;
 
 import org.apache.logging.log4j.Level;
+import org.bukkit.plugin.Plugin;
+
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class Logger {
+    private static final Map<Plugin, Logger> map = Collections.synchronizedMap(new HashMap<>());
     private final java.util.logging.Logger _logger;
     private final Level configuredLevel;
 
-    public Logger(java.util.logging.Logger logger, String level) {
+    Logger(java.util.logging.Logger logger, String level) {
         this(logger, Level.toLevel(level, Level.INFO));
     }
 
     Logger(java.util.logging.Logger logger, Level level) {
         this._logger = logger;
         this.configuredLevel = level;
+    }
+
+    public static void register(Plugin plugin, String logLevel) {
+        map.put(plugin, new Logger(plugin.getLogger(), logLevel));
+    }
+
+    public static Logger getInstance(Plugin plugin) {
+        return map.get(plugin);
+    }
+
+    public static void unregister(Plugin plugin) {
+        map.remove(plugin);
     }
 
     public void fatal(String msg) {
