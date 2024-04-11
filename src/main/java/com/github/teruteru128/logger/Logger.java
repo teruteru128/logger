@@ -117,7 +117,7 @@ public class Logger {
    * */
   public void log(org.apache.logging.log4j.Level viewLevel, java.util.logging.Level logLevel,
       String msg) {
-    if (viewLevel.compareTo(this.configuredLevel) >= 0) {
+    if (viewLevel.compareTo(this.configuredLevel) <= 0) {
       this._logger.log(logLevel, msg);
     }
   }
